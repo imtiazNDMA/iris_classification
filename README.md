@@ -1,4 +1,4 @@
-# 🌸 Iris Classification Machine Learning Pipeline
+#  Iris Classification Machine Learning Pipeline
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.5+-orange.svg)](https://scikit-learn.org)
@@ -6,7 +6,7 @@
 
 A comprehensive machine learning project demonstrating end-to-end classification using multiple algorithms with hyperparameter optimization and professional data visualizations.
 
-## 🎯 Project Overview
+##  Project Overview
 
 This project showcases a complete machine learning pipeline for the classic Iris classification problem, featuring:
 
@@ -17,7 +17,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 - **📊 Performance Comparison** with detailed metrics and analysis
 - **📈 Professional Visualizations** with publication-ready design
 
-## 📊 Dataset
+## Dataset
 
 - **Dataset**: Iris Flower Classification
 - **Features**: 4 numerical measurements (sepal length, sepal width, petal length, petal width)
@@ -25,7 +25,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 - **Samples**: 150 observations
 - **Balance**: Perfectly balanced (50 samples per class)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language**: Python 3.10+
 - **ML Framework**: Scikit-learn
@@ -69,7 +69,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 - **Hyperparameter Impact**: Decision Tree showed highest improvement from tuning (7.32%)
 - **Linear Models**: SVM and Logistic Regression were already near-optimal
 
-## 📊 Visualizations
+## Visualizations
 
 ### Exploratory Data Analysis (`results/EDA/`)
 - **Feature Distributions**: Histograms showing data distribution patterns
@@ -84,7 +84,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 - **Average Metrics**: Precision, recall, and F1-score comparison
 - **Improvement Analysis**: Before/after hyperparameter tuning results
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 iris_classification/
@@ -110,7 +110,7 @@ iris_classification/
 └── README.md               # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.10+
@@ -155,7 +155,7 @@ uv sync --dev
 uv run python main.py
 ```
 
-## 📋 Modules & Scripts
+## Modules & Scripts
 
 ### Core Modules (`src/`)
 
@@ -249,16 +249,16 @@ Iris-versicolor       1.00      0.93      0.97        15
 weighted avg       0.98      0.98      0.98        45
 ```
 
-## 💡 Key Features & Highlights
+## Key Features & Highlights
 
-- **🔬 Scientific Approach**: Rigorous statistical analysis and validation
-- **📊 Publication-Ready Visualizations**: Professional plots with consistent styling
-- **⚡ Performance Optimized**: Efficient hyperparameter tuning and model selection
-- **🔄 Reproducible**: Fixed random seeds and deterministic results
-- **📈 Scalable Architecture**: Modular design for easy extension
-- **🧪 Experiment Tracking**: Comprehensive logging and result serialization
+- ** Scientific Approach**: Rigorous statistical analysis and validation
+- ** Publication-Ready Visualizations**: Professional plots with consistent styling
+- ** Performance Optimized**: Efficient hyperparameter tuning and model selection
+- ** Reproducible**: Fixed random seeds and deterministic results
+- ** Scalable Architecture**: Modular design for easy extension
+- ** Experiment Tracking**: Comprehensive logging and result serialization
 
-## 🎓 Learning Outcomes
+##  Learning Outcomes
 
 This project demonstrates expertise in:
 - **Machine Learning Pipeline Design**: End-to-end ML workflow implementation
@@ -269,7 +269,7 @@ This project demonstrates expertise in:
 - **Code Organization**: Clean, modular, and maintainable codebase
 - **Reproducible Research**: Version-controlled experiments and results
 
-## 🚀 Production Readiness
+##  Production Readiness
 
 The pipeline includes production-ready features:
 - **Error Handling**: Robust exception handling and logging
@@ -278,7 +278,7 @@ The pipeline includes production-ready features:
 - **Configuration Management**: Centralized project configuration
 - **Documentation**: Comprehensive code documentation and README
 
-## 🤝 Contributing
+##  Contributing
 
 This project serves as a portfolio showcase demonstrating:
 - **ML Pipeline Design**: From raw data to production-ready models
@@ -286,7 +286,7 @@ This project serves as a portfolio showcase demonstrating:
 - **Visualization Excellence**: Professional data storytelling
 - **Code Quality**: Clean, documented, and reproducible code
 
-## 📞 Contact
+## Contact
 
 **Imtiaz Nabi**  
 📧 [imtiaznabi8@gmail.com](mailto:imtiaznabi8@gmail.com)  
@@ -295,4 +295,4 @@ This project serves as a portfolio showcase demonstrating:
 
 ---
 
-*🌸 This project demonstrates the complete lifecycle of a machine learning classification task, from data exploration to model deployment-ready solutions.*
+*This project demonstrates the complete lifecycle of a machine learning classification task, from data exploration to model deployment-ready solutions.*
