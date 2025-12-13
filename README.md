@@ -295,4 +295,4 @@ This project serves as a portfolio showcase demonstrating:
 
 ---
 
-*This project demonstrates the complete lifecycle of a machine learning classification task, from data exploration to model deployment-ready solutions.*
+*I am open to freelance ML Engineering, Data Engineering and AI Engineering projects*
