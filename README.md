@@ -59,7 +59,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 | 🥉 | **Logistic Regression** | **91.11%** | 98.10% | +0.00% |
 | 4️⃣ | **Random Forest (Tuned)** | **91.11%** | 96.19% | +2.50% |
 
-![Performance Comparison](results/ml_pipeline_detailed_metrics.png)
+![Performance Comparison](results/ML/ml_pipeline_detailed_metrics.png)
 
 ### Key Findings
 
