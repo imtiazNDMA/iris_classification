@@ -97,16 +97,33 @@ iris_classification/
 │   ├── ml_pipeline.ipynb   # Machine learning pipeline
 │   └── ml_vis.ipynb        # Visualization creation
 ├── src/                     # Production-ready Python modules
-│   ├── eda_analysis.py     # Exploratory data analysis
-│   ├── ml_pipeline.py      # Machine learning pipeline
+│   ├── config.py           # Configuration management
+│   ├── logger.py           # Structured logging
+│   ├── data_loader.py      # Data loading and validation
+│   ├── data_validation.py  # Data quality checks
+│   ├── model_trainer.py    # Model training and evaluation
+│   ├── api.py             # FastAPI service for inference
+│   ├── ml_pipeline_refactored.py # Refactored main pipeline
+│   ├── eda_analysis.py    # Exploratory data analysis
+│   ├── ml_pipeline.py     # Original ML pipeline
 │   └── ml_visualizations.py # Visualization generator
+├── tests/                   # Comprehensive test suite
+│   ├── conftest.py        # Pytest configuration
+│   ├── test_config.py      # Configuration tests
+│   └── test_validation.py  # Data validation tests
+├── config/                  # Configuration files
+│   └── config.yaml        # Main configuration
 ├── results/                 # Generated outputs
 │   ├── EDA/                # EDA visualizations
 │   ├── ML/                 # ML pipeline results
 │   └── MODEL RESULTS/      # Serialized model results
-├── main.py                  # Entry point script
+├── logs/                    # Application logs
+├── main.py                  # Original entry point
 ├── pyproject.toml          # Project configuration
 ├── uv.lock                 # Dependency lock file
+├── Dockerfile              # Container configuration
+├── docker-compose.yml      # Multi-service deployment
+├── .dockerignore          # Docker ignore rules
 └── README.md               # This file
 ```
 
@@ -115,6 +132,7 @@ iris_classification/
 ### Prerequisites
 - Python 3.10+
 - UV package manager
+- Docker (optional, for containerized deployment)
 
 ### Installation
 
@@ -126,33 +144,61 @@ cd iris_classification
 # Install dependencies
 uv sync
 
-# Run the complete pipeline
-python main.py
+# Run the complete pipeline (refactored version)
+python src/ml_pipeline_refactored.py
 ```
 
 ### Usage
 
+#### Production Pipeline (Recommended)
 ```bash
-# Run the complete pipeline
-python main.py
+# Run the refactored modular pipeline
+python src/ml_pipeline_refactored.py
 
-# Run individual components
-python src/eda_analysis.py
-python src/ml_pipeline.py
-python src/ml_visualizations.py
-
-# Run Jupyter notebooks for exploration
-jupyter notebook notebooks/
+# Run with custom configuration
+python src/ml_pipeline_refactored.py --config config/custom_config.yaml
 ```
 
-### Development Workflow
+#### API Server
+```bash
+# Start the FastAPI server
+python src/api.py
 
+# Or with custom settings
+python src/api.py --host 0.0.0.0 --port 8000 --reload
+```
+
+#### Docker Deployment
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Access services:
+# - API: http://localhost:8000
+# - API Docs: http://localhost:8000/docs
+# - Jupyter: http://localhost:8888
+# - MLflow: http://localhost:5000
+```
+
+#### Development Workflow
 ```bash
 # Install development dependencies
 uv sync --dev
 
+# Run tests
+pytest tests/
+
 # Run with hot reload during development
-uv run python main.py
+uv run python src/ml_pipeline_refactored.py
+```
+
+#### Jupyter Notebooks
+```bash
+# Run Jupyter for exploration
+jupyter notebook notebooks/
+
+# Or with Docker
+docker-compose up jupyter
 ```
 
 ## 📋 Modules & Scripts
@@ -251,32 +297,126 @@ weighted avg       0.98      0.98      0.98        45
 
 ## 💡 Key Features & Highlights
 
-- **🔬 Scientific Approach**: Rigorous statistical analysis and validation
-- **📊 Publication-Ready Visualizations**: Professional plots with consistent styling
-- **⚡ Performance Optimized**: Efficient hyperparameter tuning and model selection
-- **🔄 Reproducible**: Fixed random seeds and deterministic results
-- **📈 Scalable Architecture**: Modular design for easy extension
-- **🧪 Experiment Tracking**: Comprehensive logging and result serialization
+### 🏗️ **Software Engineering Excellence**
+- **Modular Architecture**: Clean separation of concerns with reusable components
+- **Configuration Management**: YAML-based configuration with environment support
+- **Structured Logging**: Comprehensive logging with file and console output
+- **Error Handling**: Robust exception handling and data validation
+- **Type Safety**: Full type hints and data validation with Pydantic
+- **Testing Framework**: Comprehensive pytest test suite with fixtures
 
-## 🎓 Learning Outcomes
+### 🔬 **Machine Learning Best Practices**
+- **Data Validation**: Automated data quality checks and validation
+- **Model Comparison**: Systematic evaluation of multiple algorithms
+- **Hyperparameter Tuning**: Grid search with cross-validation
+- **Performance Metrics**: Comprehensive evaluation metrics and analysis
+- **Reproducibility**: Fixed random seeds and deterministic pipelines
+- **Experiment Tracking**: Structured logging and result serialization
 
-This project demonstrates expertise in:
-- **Machine Learning Pipeline Design**: End-to-end ML workflow implementation
-- **Statistical Analysis**: Comprehensive EDA and feature engineering
-- **Model Selection & Evaluation**: Systematic comparison of multiple algorithms
-- **Hyperparameter Optimization**: Grid search with cross-validation
-- **Data Visualization**: Professional plotting and visual storytelling
-- **Code Organization**: Clean, modular, and maintainable codebase
-- **Reproducible Research**: Version-controlled experiments and results
+### 🚀 **Production-Ready Features**
+- **API Service**: FastAPI-based REST API for model inference
+- **Containerization**: Docker and Docker Compose support
+- **Health Checks**: Built-in health monitoring and status endpoints
+- **Documentation**: Auto-generated API docs with OpenAPI/Swagger
+- **Scalability**: Multi-worker support and load balancing ready
+- **Security**: Input validation and CORS support
 
-## 🚀 Production Readiness
+### 📊 **Data Science Excellence**
+- **Exploratory Analysis**: Comprehensive EDA with visualizations
+- **Statistical Validation**: Rigorous statistical testing and validation
+- **Publication-Ready Plots**: Professional visualizations with consistent styling
+- **Interactive Notebooks**: Jupyter notebooks for exploration and prototyping
+- **Performance Optimization**: Efficient algorithms and memory usage
 
-The pipeline includes production-ready features:
-- **Error Handling**: Robust exception handling and logging
-- **Data Validation**: Input validation and quality checks
-- **Model Persistence**: Serialized model results for deployment
-- **Configuration Management**: Centralized project configuration
-- **Documentation**: Comprehensive code documentation and README
+## 🎓 Learning Outcomes & Technical Expertise
+
+### **Machine Learning Engineering**
+- **End-to-End ML Pipelines**: From data ingestion to model deployment
+- **Model Lifecycle Management**: Training, validation, and serving workflows
+- **Hyperparameter Optimization**: Systematic tuning with cross-validation
+- **Performance Evaluation**: Comprehensive metrics and statistical analysis
+- **Experiment Management**: Reproducible experiments with tracking
+
+### **Software Engineering**
+- **Modular Architecture**: Clean separation of concerns and SOLID principles
+- **API Development**: RESTful API design with FastAPI
+- **Container Orchestration**: Docker and Docker Compose deployment
+- **Testing Strategies**: Unit, integration, and end-to-end testing
+- **Configuration Management**: Environment-based configuration systems
+- **Logging & Monitoring**: Structured logging and observability
+
+### **Data Science & Analytics**
+- **Statistical Analysis**: Rigorous EDA and hypothesis testing
+- **Data Validation**: Automated quality checks and anomaly detection
+- **Feature Engineering**: Systematic feature selection and transformation
+- **Visualization Excellence**: Publication-ready data storytelling
+- **Reproducible Research**: Version-controlled analytical workflows
+
+### **DevOps & MLOps**
+- **Containerization**: Multi-stage Docker builds for production
+- **Service Orchestration**: Multi-service deployment with Docker Compose
+- **API Documentation**: Auto-generated OpenAPI/Swagger documentation
+- **Health Monitoring**: Built-in health checks and status endpoints
+- **Scalability Patterns**: Stateless services ready for horizontal scaling
+
+## 🚀 Production Deployment Guide
+
+### **API Endpoints**
+```bash
+# Health check
+GET /health
+
+# Model information
+GET /model/info
+
+# Single prediction
+POST /predict
+{
+  "sepal_length": 5.1,
+  "sepal_width": 3.5,
+  "petal_length": 1.4,
+  "petal_width": 0.2
+}
+
+# Batch prediction
+POST /predict/batch
+{
+  "features": [
+    {"sepal_length": 5.1, "sepal_width": 3.5, "petal_length": 1.4, "petal_width": 0.2},
+    {"sepal_length": 6.2, "sepal_width": 3.4, "petal_length": 5.4, "petal_width": 2.3}
+  ]
+}
+
+# Demo prediction
+GET /predict/demo
+```
+
+### **Docker Deployment**
+```bash
+# Build and deploy all services
+docker-compose up -d
+
+# Scale API service
+docker-compose up -d --scale api=3
+
+# View logs
+docker-compose logs -f api
+
+# Stop services
+docker-compose down
+```
+
+### **Configuration**
+- **Environment Variables**: `LOG_LEVEL`, `PYTHONPATH`
+- **Configuration Files**: `config/config.yaml`
+- **Secrets Management**: Environment-based configuration
+- **Resource Limits**: Configurable memory and CPU limits
+
+### **Monitoring & Observability**
+- **Health Checks**: `/health` endpoint with service status
+- **Structured Logging**: JSON-formatted logs with correlation IDs
+- **Performance Metrics**: Request timing and model inference metrics
+- **Error Tracking**: Comprehensive error logging and alerting
 
 ## 🤝 Contributing
 
