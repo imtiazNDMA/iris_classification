@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+import warnings
 from typing import Dict, Any, Tuple, Optional, List
 from sklearn.base import BaseEstimator
 from sklearn.model_selection import GridSearchCV, cross_val_score
@@ -18,6 +19,7 @@ from sklearn.metrics import (
     confusion_matrix,
     classification_report,
 )
+from sklearn.exceptions import ConvergenceWarning
 
 from src.logger import (
     get_logger,
@@ -47,6 +49,12 @@ class ModelTrainer:
         Returns:
             Dictionary of model name to model instance.
         """
+        # Suppress sklearn warnings for cleaner output
+        import warnings
+
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        warnings.filterwarnings("ignore", category=ConvergenceWarning)
+
         models = {
             "logistic_regression": LogisticRegression(
                 **self.config.models.logistic_regression
@@ -160,6 +168,12 @@ class ModelTrainer:
         Returns:
             Dictionary of tuned model results.
         """
+        # Suppress sklearn warnings for cleaner output
+        import warnings
+
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        warnings.filterwarnings("ignore", category=ConvergenceWarning)
+
         models = self.get_base_models()
         tuning_results = {}
 
@@ -190,14 +204,14 @@ class ModelTrainer:
                 # Get hyperparameter grid
                 param_grid = self.config.hyperparameter_grids[name]
 
-                # Perform grid search
+                # Perform grid search with reduced verbosity for cleaner output
                 grid_search = GridSearchCV(
                     model,
                     param_grid,
                     cv=self.config.cross_validation.cv_folds,
                     scoring=self.config.cross_validation.scoring,
                     n_jobs=self.config.cross_validation.n_jobs,
-                    verbose=self.config.cross_validation.verbose,
+                    verbose=0,  # Reduce verbosity
                 )
 
                 grid_search.fit(X_train_scaled, y_train)

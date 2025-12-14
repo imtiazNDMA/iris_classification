@@ -15,6 +15,7 @@ from src.config import get_config
 from src.logger import setup_logging, get_logger
 from src.data_loader import get_data_loader
 from src.model_trainer import get_model_trainer
+from src.model_manager import get_model_manager
 
 
 class MLPipeline:
@@ -44,6 +45,7 @@ class MLPipeline:
         # Initialize components
         self.data_loader = get_data_loader()
         self.model_trainer = get_model_trainer()
+        self.model_manager = get_model_manager()
 
         self.logger.info("ML Pipeline initialized")
 
@@ -142,6 +144,9 @@ class MLPipeline:
 
             if self.config.output.save_models:
                 self._save_results(results)
+                self._save_production_model(
+                    best_model_name, best_model, label_encoder, best_model_info
+                )
 
             # Step 6: Generate summary report
             self._generate_summary_report(results)
@@ -196,6 +201,51 @@ class MLPipeline:
 
         except Exception as e:
             self.logger.error(f"Failed to save results: {str(e)}")
+
+    def _save_production_model(
+        self,
+        model_name: str,
+        model: Any,
+        label_encoder: Any,
+        model_info: Dict[str, Any],
+    ) -> None:
+        """Save the best model in production-ready format.
+
+        Args:
+            model_name: Name of the best model.
+            model: Trained model object.
+            label_encoder: Fitted label encoder.
+            model_info: Model performance information.
+        """
+        try:
+            # Prepare model info for production
+            production_model_info = {
+                "model_name": model_name,
+                "accuracy": model_info.get("accuracy", 0.0),
+                "cv_score": model_info.get("cv_score", 0.0),
+                "training_samples": self.config.data.__dict__.get("random_state", 42),
+                "feature_names": [
+                    "sepal_length",
+                    "sepal_width",
+                    "petal_length",
+                    "petal_width",
+                ],
+                "class_names": ["setosa", "versicolor", "virginica"],
+                "last_trained": "production-ready",
+            }
+
+            # Save production model
+            model_path = self.model_manager.save_production_model(
+                model=model,
+                label_encoder=label_encoder,
+                model_info=production_model_info,
+                version="1.0.0",
+            )
+
+            self.logger.info(f"Production model saved to: {model_path}")
+
+        except Exception as e:
+            self.logger.error(f"Failed to save production model: {str(e)}")
 
     def _generate_summary_report(self, results: Dict[str, Any]) -> None:
         """Generate and display summary report.

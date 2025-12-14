@@ -52,12 +52,12 @@ This project showcases a complete machine learning pipeline for the classic Iris
 
 ### Final Model Rankings
 
-| Rank | Model | Test Accuracy | CV Score | Improvement |
-|------|-------|---------------|----------|-------------|
-| 🥇 | **Decision Tree (Tuned)** | **97.78%** | 95.24% | +7.32% |
-| 🥈 | **Support Vector Machine** | **93.33%** | 98.10% | +0.00% |
-| 🥉 | **Logistic Regression** | **91.11%** | 98.10% | +0.00% |
-| 4️⃣ | **Random Forest (Tuned)** | **91.11%** | 96.19% | +2.50% |
+| Rank | Model | Test Accuracy | CV Score | Status |
+|------|-------|---------------|----------|---------|
+| 🥇 | **Decision Tree (Baseline)** | **93.33%** | 94.29% | Production-Ready |
+| 🥈 | **Support Vector Machine** | **93.33%** | 97.14% | Production-Ready |
+| 🥉 | **Logistic Regression** | **91.11%** | 98.10% | Production-Ready |
+| 4️⃣ | **Random Forest** | **88.89%** | 95.24% | Production-Ready |
 
 ![Performance Comparison](results/ML/ml_pipeline_detailed_metrics.png)
 
@@ -102,8 +102,9 @@ iris_classification/
 │   ├── data_loader.py      # Data loading and validation
 │   ├── data_validation.py  # Data quality checks
 │   ├── model_trainer.py    # Model training and evaluation
+│   ├── model_manager.py    # Production model management
 │   ├── api.py             # FastAPI service for inference
-│   ├── ml_pipeline_refactored.py # Refactored main pipeline
+│   ├── ml_pipeline_refactored.py # Production-optimized main pipeline
 │   ├── eda_analysis.py    # Exploratory data analysis
 │   ├── ml_pipeline.py     # Original ML pipeline
 │   └── ml_visualizations.py # Visualization generator
@@ -111,6 +112,8 @@ iris_classification/
 │   ├── conftest.py        # Pytest configuration
 │   ├── test_config.py      # Configuration tests
 │   └── test_validation.py  # Data validation tests
+├── models/                  # Production model artifacts
+│   └── iris_model_v1.0.0.joblib # Production-ready model
 ├── config/                  # Configuration files
 │   └── config.yaml        # Main configuration
 ├── results/                 # Generated outputs
@@ -118,7 +121,7 @@ iris_classification/
 │   ├── ML/                 # ML pipeline results
 │   └── MODEL RESULTS/      # Serialized model results
 ├── logs/                    # Application logs
-├── main.py                  # Original entry point
+├── main.py                  # Production entry point with CLI
 ├── pyproject.toml          # Project configuration
 ├── uv.lock                 # Dependency lock file
 ├── Dockerfile              # Container configuration
@@ -144,19 +147,22 @@ cd iris_classification
 # Install dependencies
 uv sync
 
-# Run the complete pipeline (refactored version)
-python src/ml_pipeline_refactored.py
+# Run the complete pipeline (production-optimized version)
+python main.py --pipeline
 ```
 
 ### Usage
 
 #### Production Pipeline (Recommended)
 ```bash
-# Run the refactored modular pipeline
-python src/ml_pipeline_refactored.py
+# Run the production-optimized pipeline
+python main.py --pipeline
 
 # Run with custom configuration
-python src/ml_pipeline_refactored.py --config config/custom_config.yaml
+python main.py --pipeline --config-file config/custom_config.yaml
+
+# Run with verbose logging
+python main.py --pipeline --verbose
 ```
 
 #### API Server
@@ -238,6 +244,14 @@ docker-compose up jupyter
 - Multiple algorithm support (Logistic Regression, Decision Tree, Random Forest, SVM)
 - Performance metrics calculation
 - Model comparison and ranking
+- Warning suppression for cleaner production output
+
+#### `model_manager.py`
+- Production-ready model saving and loading
+- Model versioning and validation
+- Joblib-based serialization for sklearn objects
+- Model package structure validation
+- Production model metadata management
 
 #### `api.py`
 - FastAPI-based REST API for model inference
@@ -278,9 +292,10 @@ docker-compose up jupyter
 ## Model Insights
 
 ### Decision Tree (Best Performer)
-- **Optimal Parameters**: max_depth=3, criterion='gini', min_samples_split=2
+- **Optimal Parameters**: max_depth=3, criterion='gini', random_state=42
 - **Strengths**: Excellent interpretability, perfect precision on Setosa/Versicolor
-- **Performance**: 97.78% accuracy with only 1 misclassification
+- **Performance**: 93.33% accuracy with consistent cross-validation
+- **Production Status**: Deployed as production model v1.0.0
 - **Recommendation**: Production-ready for balanced interpretability-performance trade-off
 
 ### Support Vector Machine (Consistent)
@@ -335,6 +350,9 @@ weighted avg       0.98      0.98      0.98        45
 - **Error Handling**: Robust exception handling and data validation
 - **Type Safety**: Full type hints and data validation with Pydantic
 - **Testing Framework**: Comprehensive pytest test suite with fixtures
+- **Production Model Management**: Joblib-based model serialization and versioning
+- **Warning Suppression**: Clean production output without sklearn warnings
+- **API Model Loading**: Intelligent fallback from production to demo models
 
 ### Machine Learning Best Practices
 - **Data Validation**: Automated data quality checks and validation
@@ -351,6 +369,9 @@ weighted avg       0.98      0.98      0.98        45
 - **Documentation**: Auto-generated API docs with OpenAPI/Swagger
 - **Scalability**: Multi-worker support and load balancing ready
 - **Security**: Input validation and CORS support
+- **Model Versioning**: Production model saving with version control
+- **Graceful Degradation**: Automatic fallback to demo models when production models unavailable
+- **Optimized Configuration**: Production-tuned hyperparameters and solver settings
 
 ### Data Science Excellence
 - **Exploratory Analysis**: Comprehensive EDA with visualizations

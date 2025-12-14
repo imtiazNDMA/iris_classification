@@ -612,3 +612,676 @@ Model Rankings (by Accuracy):
 ====================================================================================================
 2025-12-13 19:39:21,989 - ml_pipeline - INFO - PIPELINE COMPLETED SUCCESSFULLY
 2025-12-13 19:39:21,989 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:02:36,936 - ml_pipeline.__main__ - INFO - Starting Iris Classification API on 0.0.0.0:8000
+2025-12-14 14:05:05,451 - ml_pipeline - INFO - ML Pipeline initialized
+2025-12-14 14:05:05,451 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:05:05,451 - ml_pipeline - INFO -                               IRIS CLASSIFICATION PIPELINE
+2025-12-14 14:05:05,451 - ml_pipeline - INFO -                          Modular Architecture v2.0
+2025-12-14 14:05:05,451 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:05:05,451 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:05,451 - ml_pipeline - INFO - STEP 1: Data Loading and Preparation
+2025-12-14 14:05:05,451 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:05,451 - ml_pipeline.DataLoader - INFO - Loading data from data/features.csv and data/targets.csv
+2025-12-14 14:05:05,504 - ml_pipeline.DataLoader - INFO - Data validation passed: 150 samples, 4 features, 3 classes
+2025-12-14 14:05:05,504 - ml_pipeline.DataLoader - INFO - Successfully loaded data: 150 samples, 4 features
+2025-12-14 14:05:05,504 - ml_pipeline.data - INFO - features shape: (150, 4)
+2025-12-14 14:05:05,514 - ml_pipeline.data - INFO - features basic statistics:
+       sepal length  sepal width  petal length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+2025-12-14 14:05:05,515 - ml_pipeline.data - INFO - features missing values: 0
+2025-12-14 14:05:05,515 - ml_pipeline.data - INFO - targets shape: (150,)
+2025-12-14 14:05:05,519 - ml_pipeline.data - INFO - targets basic statistics:
+count             150
+unique              3
+top       Iris-setosa
+freq               50
+Name: class, dtype: object
+2025-12-14 14:05:05,519 - ml_pipeline.data - INFO - targets missing values: 0
+2025-12-14 14:05:05,533 - ml_pipeline.DataLoader - INFO - Encoding 3 unique target classes
+2025-12-14 14:05:05,533 - ml_pipeline.DataLoader - INFO - Target classes: ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+2025-12-14 14:05:05,539 - ml_pipeline.DataLoader - INFO - Creating train-test split: test_size=0.3, random_state=42, stratify=True
+2025-12-14 14:05:05,540 - ml_pipeline.DataLoader - INFO - Train set: 105 samples, Test set: 45 samples
+2025-12-14 14:05:05,541 - ml_pipeline.DataLoader - INFO - Class distribution - Train: {'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333, 'Iris-virginica': 0.3333333333333333}, Test: {'Iris-virginica': 0.3333333333333333, 'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333}
+2025-12-14 14:05:05,541 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:05,541 - ml_pipeline - INFO - STEP 2: Baseline Model Training
+2025-12-14 14:05:05,542 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:05,544 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:05:05,545 - ml_pipeline.ModelTrainer - INFO - Training baseline models
+2025-12-14 14:05:05,545 - ml_pipeline.experiment - INFO - Starting experiment: baseline_training
+2025-12-14 14:05:05,545 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:05:05,545 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:05:05,545 - ml_pipeline.experiment - INFO -   n_samples: 105
+2025-12-14 14:05:05,545 - ml_pipeline.ModelTrainer - INFO - Training logistic_regression
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO - Model: logistic_regression (baseline)
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO -   accuracy: 0.8000
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO -   precision: 0.8056
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO -   recall: 0.8000
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO -   f1_score: 0.7980
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO -   cv_score: 0.9143
+2025-12-14 14:05:07,428 - ml_pipeline.model - INFO -   cv_std: 0.0632
+2025-12-14 14:05:07,428 - ml_pipeline.ModelTrainer - INFO - Training decision_tree
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO - Model: decision_tree (baseline)
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO -   cv_score: 0.9429
+2025-12-14 14:05:08,819 - ml_pipeline.model - INFO -   cv_std: 0.0190
+2025-12-14 14:05:08,819 - ml_pipeline.ModelTrainer - INFO - Training random_forest
+2025-12-14 14:05:10,165 - ml_pipeline.model - INFO - Model: random_forest (baseline)
+2025-12-14 14:05:10,165 - ml_pipeline.model - INFO -   accuracy: 0.8889
+2025-12-14 14:05:10,165 - ml_pipeline.model - INFO -   precision: 0.8981
+2025-12-14 14:05:10,165 - ml_pipeline.model - INFO -   recall: 0.8889
+2025-12-14 14:05:10,166 - ml_pipeline.model - INFO -   f1_score: 0.8878
+2025-12-14 14:05:10,166 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:05:10,166 - ml_pipeline.model - INFO -   cv_std: 0.0301
+2025-12-14 14:05:10,166 - ml_pipeline.ModelTrainer - INFO - Training svm
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO - Model: svm (baseline)
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO -   precision: 0.9345
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO -   f1_score: 0.9333
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO -   cv_score: 0.9714
+2025-12-14 14:05:10,198 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:05:10,199 - ml_pipeline.experiment - INFO - Completed experiment: baseline_training
+2025-12-14 14:05:10,199 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:05:10,199 - ml_pipeline.experiment - INFO -   n_successful: 4
+2025-12-14 14:05:10,199 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:10,199 - ml_pipeline - INFO - STEP 3: Hyperparameter Tuning
+2025-12-14 14:05:10,199 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:10,202 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:05:10,202 - ml_pipeline.ModelTrainer - INFO - Starting hyperparameter tuning
+2025-12-14 14:05:10,202 - ml_pipeline.experiment - INFO - Starting experiment: hyperparameter_tuning
+2025-12-14 14:05:10,202 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:05:10,202 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:05:10,202 - ml_pipeline.experiment - INFO -   cv_folds: 5
+2025-12-14 14:05:10,202 - ml_pipeline.ModelTrainer - INFO - Tuning logistic_regression
+2025-12-14 14:05:10,279 - ml_pipeline.model - INFO - Model: logistic_regression (tuned)
+2025-12-14 14:05:10,279 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:05:10,279 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:05:10,279 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:05:10,279 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:05:10,279 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:05:10,279 - ml_pipeline.ModelTrainer - ERROR - Failed to tune logistic_regression: unsupported format string passed to dict.__format__
+2025-12-14 14:05:10,279 - ml_pipeline.ModelTrainer - INFO - Tuning decision_tree
+2025-12-14 14:05:10,461 - ml_pipeline.model - INFO - Model: decision_tree (tuned)
+2025-12-14 14:05:10,461 - ml_pipeline.model - INFO -   accuracy: 0.9778
+2025-12-14 14:05:10,461 - ml_pipeline.model - INFO -   precision: 0.9792
+2025-12-14 14:05:10,461 - ml_pipeline.model - INFO -   recall: 0.9778
+2025-12-14 14:05:10,461 - ml_pipeline.model - INFO -   f1_score: 0.9778
+2025-12-14 14:05:10,461 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:05:10,461 - ml_pipeline.ModelTrainer - ERROR - Failed to tune decision_tree: unsupported format string passed to dict.__format__
+2025-12-14 14:05:10,461 - ml_pipeline.ModelTrainer - INFO - Tuning random_forest
+2025-12-14 14:05:16,343 - ml_pipeline.model - INFO - Model: random_forest (tuned)
+2025-12-14 14:05:16,343 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:05:16,343 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:05:16,343 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:05:16,343 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:05:16,343 - ml_pipeline.model - INFO -   cv_score: 0.9619
+2025-12-14 14:05:16,343 - ml_pipeline.ModelTrainer - ERROR - Failed to tune random_forest: unsupported format string passed to dict.__format__
+2025-12-14 14:05:16,343 - ml_pipeline.ModelTrainer - INFO - Tuning svm
+2025-12-14 14:05:16,431 - ml_pipeline.model - INFO - Model: svm (tuned)
+2025-12-14 14:05:16,431 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:05:16,431 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:05:16,431 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:05:16,431 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:05:16,431 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:05:16,431 - ml_pipeline.ModelTrainer - ERROR - Failed to tune svm: unsupported format string passed to dict.__format__
+2025-12-14 14:05:16,431 - ml_pipeline.experiment - INFO - Completed experiment: hyperparameter_tuning
+2025-12-14 14:05:16,431 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:05:16,431 - ml_pipeline.experiment - INFO -   n_successful: 0
+2025-12-14 14:05:16,431 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:16,431 - ml_pipeline - INFO - STEP 4: Model Comparison and Analysis
+2025-12-14 14:05:16,431 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:16,439 - ml_pipeline.ModelTrainer - INFO - Created comparison for 4 model versions
+2025-12-14 14:05:16,446 - ml_pipeline.ModelTrainer - INFO - Best model: decision_tree_baseline with accuracy: 0.9333
+2025-12-14 14:05:16,446 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:16,446 - ml_pipeline - INFO - STEP 5: Saving Results
+2025-12-14 14:05:16,446 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - Results saved to results\MODEL RESULTS\ml_pipeline_results.pkl
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - 
+================================================== SUMMARY REPORT ==================================================
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - Dataset: 150 samples, 4 features
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - Classes: 3 (Iris-setosa, Iris-versicolor, Iris-virginica)
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - 
+Best Model: decision_tree_baseline
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - Accuracy: 0.9333
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - CV Score: 0.9429
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - 
+Model Rankings (by Accuracy):
+2025-12-14 14:05:16,447 - ml_pipeline - INFO - 
+============================================================================================================
+2025-12-14 14:05:16,448 - ml_pipeline - INFO - 
+====================================================================================================
+2025-12-14 14:05:16,448 - ml_pipeline - INFO - PIPELINE COMPLETED SUCCESSFULLY
+2025-12-14 14:05:16,448 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:06:49,743 - ml_pipeline - INFO - ML Pipeline initialized
+2025-12-14 14:06:49,743 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:06:49,743 - ml_pipeline - INFO -                               IRIS CLASSIFICATION PIPELINE
+2025-12-14 14:06:49,744 - ml_pipeline - INFO -                          Modular Architecture v2.0
+2025-12-14 14:06:49,744 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:06:49,744 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:49,744 - ml_pipeline - INFO - STEP 1: Data Loading and Preparation
+2025-12-14 14:06:49,744 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:49,744 - ml_pipeline.DataLoader - INFO - Loading data from data/features.csv and data/targets.csv
+2025-12-14 14:06:49,755 - ml_pipeline.DataLoader - INFO - Data validation passed: 150 samples, 4 features, 3 classes
+2025-12-14 14:06:49,755 - ml_pipeline.DataLoader - INFO - Successfully loaded data: 150 samples, 4 features
+2025-12-14 14:06:49,756 - ml_pipeline.data - INFO - features shape: (150, 4)
+2025-12-14 14:06:49,763 - ml_pipeline.data - INFO - features basic statistics:
+       sepal length  sepal width  petal length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+2025-12-14 14:06:49,763 - ml_pipeline.data - INFO - features missing values: 0
+2025-12-14 14:06:49,763 - ml_pipeline.data - INFO - targets shape: (150,)
+2025-12-14 14:06:49,764 - ml_pipeline.data - INFO - targets basic statistics:
+count             150
+unique              3
+top       Iris-setosa
+freq               50
+Name: class, dtype: object
+2025-12-14 14:06:49,764 - ml_pipeline.data - INFO - targets missing values: 0
+2025-12-14 14:06:49,772 - ml_pipeline.DataLoader - INFO - Encoding 3 unique target classes
+2025-12-14 14:06:49,772 - ml_pipeline.DataLoader - INFO - Target classes: ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+2025-12-14 14:06:49,772 - ml_pipeline.DataLoader - INFO - Creating train-test split: test_size=0.3, random_state=42, stratify=True
+2025-12-14 14:06:49,772 - ml_pipeline.DataLoader - INFO - Train set: 105 samples, Test set: 45 samples
+2025-12-14 14:06:49,772 - ml_pipeline.DataLoader - INFO - Class distribution - Train: {'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333, 'Iris-virginica': 0.3333333333333333}, Test: {'Iris-virginica': 0.3333333333333333, 'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333}
+2025-12-14 14:06:49,772 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:49,772 - ml_pipeline - INFO - STEP 2: Baseline Model Training
+2025-12-14 14:06:49,772 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:49,772 - ml_pipeline.src.model_trainer - ERROR - get_base_models failed with error: name 'ConvergenceWarning' is not defined
+2025-12-14 14:06:49,772 - ml_pipeline.src.model_trainer - ERROR - train_baseline_models failed with error: name 'ConvergenceWarning' is not defined
+2025-12-14 14:06:49,772 - ml_pipeline - ERROR - Pipeline failed: name 'ConvergenceWarning' is not defined
+2025-12-14 14:06:49,772 - ml_pipeline.__main__ - ERROR - Pipeline failed: name 'ConvergenceWarning' is not defined
+2025-12-14 14:06:59,584 - ml_pipeline - INFO - ML Pipeline initialized
+2025-12-14 14:06:59,584 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:06:59,584 - ml_pipeline - INFO -                               IRIS CLASSIFICATION PIPELINE
+2025-12-14 14:06:59,584 - ml_pipeline - INFO -                          Modular Architecture v2.0
+2025-12-14 14:06:59,584 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:06:59,584 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:59,584 - ml_pipeline - INFO - STEP 1: Data Loading and Preparation
+2025-12-14 14:06:59,584 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:59,584 - ml_pipeline.DataLoader - INFO - Loading data from data/features.csv and data/targets.csv
+2025-12-14 14:06:59,600 - ml_pipeline.DataLoader - INFO - Data validation passed: 150 samples, 4 features, 3 classes
+2025-12-14 14:06:59,600 - ml_pipeline.DataLoader - INFO - Successfully loaded data: 150 samples, 4 features
+2025-12-14 14:06:59,600 - ml_pipeline.data - INFO - features shape: (150, 4)
+2025-12-14 14:06:59,600 - ml_pipeline.data - INFO - features basic statistics:
+       sepal length  sepal width  petal length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+2025-12-14 14:06:59,610 - ml_pipeline.data - INFO - features missing values: 0
+2025-12-14 14:06:59,610 - ml_pipeline.data - INFO - targets shape: (150,)
+2025-12-14 14:06:59,610 - ml_pipeline.data - INFO - targets basic statistics:
+count             150
+unique              3
+top       Iris-setosa
+freq               50
+Name: class, dtype: object
+2025-12-14 14:06:59,610 - ml_pipeline.data - INFO - targets missing values: 0
+2025-12-14 14:06:59,622 - ml_pipeline.DataLoader - INFO - Encoding 3 unique target classes
+2025-12-14 14:06:59,622 - ml_pipeline.DataLoader - INFO - Target classes: ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+2025-12-14 14:06:59,626 - ml_pipeline.DataLoader - INFO - Creating train-test split: test_size=0.3, random_state=42, stratify=True
+2025-12-14 14:06:59,628 - ml_pipeline.DataLoader - INFO - Train set: 105 samples, Test set: 45 samples
+2025-12-14 14:06:59,629 - ml_pipeline.DataLoader - INFO - Class distribution - Train: {'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333, 'Iris-virginica': 0.3333333333333333}, Test: {'Iris-virginica': 0.3333333333333333, 'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333}
+2025-12-14 14:06:59,629 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:59,629 - ml_pipeline - INFO - STEP 2: Baseline Model Training
+2025-12-14 14:06:59,629 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:06:59,632 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:06:59,632 - ml_pipeline.ModelTrainer - INFO - Training baseline models
+2025-12-14 14:06:59,632 - ml_pipeline.experiment - INFO - Starting experiment: baseline_training
+2025-12-14 14:06:59,632 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:06:59,632 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:06:59,632 - ml_pipeline.experiment - INFO -   n_samples: 105
+2025-12-14 14:06:59,632 - ml_pipeline.ModelTrainer - INFO - Training logistic_regression
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO - Model: logistic_regression (baseline)
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:07:01,398 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:07:01,399 - ml_pipeline.ModelTrainer - INFO - Training decision_tree
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO - Model: decision_tree (baseline)
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO -   cv_score: 0.9429
+2025-12-14 14:07:02,662 - ml_pipeline.model - INFO -   cv_std: 0.0190
+2025-12-14 14:07:02,662 - ml_pipeline.ModelTrainer - INFO - Training random_forest
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO - Model: random_forest (baseline)
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO -   accuracy: 0.8889
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO -   precision: 0.8981
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO -   recall: 0.8889
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO -   f1_score: 0.8878
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:07:03,960 - ml_pipeline.model - INFO -   cv_std: 0.0301
+2025-12-14 14:07:03,960 - ml_pipeline.ModelTrainer - INFO - Training svm
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO - Model: svm (baseline)
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO -   precision: 0.9345
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO -   f1_score: 0.9333
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO -   cv_score: 0.9714
+2025-12-14 14:07:03,992 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:07:03,992 - ml_pipeline.experiment - INFO - Completed experiment: baseline_training
+2025-12-14 14:07:03,992 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:07:03,992 - ml_pipeline.experiment - INFO -   n_successful: 4
+2025-12-14 14:07:03,992 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:07:03,992 - ml_pipeline - INFO - STEP 3: Hyperparameter Tuning
+2025-12-14 14:07:03,992 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:07:03,995 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:07:03,995 - ml_pipeline.ModelTrainer - INFO - Starting hyperparameter tuning
+2025-12-14 14:07:03,996 - ml_pipeline.experiment - INFO - Starting experiment: hyperparameter_tuning
+2025-12-14 14:07:03,996 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:07:03,996 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:07:03,996 - ml_pipeline.experiment - INFO -   cv_folds: 5
+2025-12-14 14:07:03,996 - ml_pipeline.ModelTrainer - INFO - Tuning logistic_regression
+2025-12-14 14:07:04,046 - ml_pipeline.model - INFO - Model: logistic_regression (tuned)
+2025-12-14 14:07:04,047 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:07:04,047 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:07:04,047 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:07:04,047 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:07:04,047 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:07:04,047 - ml_pipeline.ModelTrainer - ERROR - Failed to tune logistic_regression: unsupported format string passed to dict.__format__
+2025-12-14 14:07:04,047 - ml_pipeline.ModelTrainer - INFO - Tuning decision_tree
+2025-12-14 14:07:04,194 - ml_pipeline.model - INFO - Model: decision_tree (tuned)
+2025-12-14 14:07:04,194 - ml_pipeline.model - INFO -   accuracy: 0.9778
+2025-12-14 14:07:04,194 - ml_pipeline.model - INFO -   precision: 0.9792
+2025-12-14 14:07:04,194 - ml_pipeline.model - INFO -   recall: 0.9778
+2025-12-14 14:07:04,194 - ml_pipeline.model - INFO -   f1_score: 0.9778
+2025-12-14 14:07:04,194 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:07:04,194 - ml_pipeline.ModelTrainer - ERROR - Failed to tune decision_tree: unsupported format string passed to dict.__format__
+2025-12-14 14:07:04,194 - ml_pipeline.ModelTrainer - INFO - Tuning random_forest
+2025-12-14 14:07:09,773 - ml_pipeline.model - INFO - Model: random_forest (tuned)
+2025-12-14 14:07:09,774 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:07:09,774 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:07:09,774 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:07:09,774 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:07:09,774 - ml_pipeline.model - INFO -   cv_score: 0.9619
+2025-12-14 14:07:09,774 - ml_pipeline.ModelTrainer - ERROR - Failed to tune random_forest: unsupported format string passed to dict.__format__
+2025-12-14 14:07:09,774 - ml_pipeline.ModelTrainer - INFO - Tuning svm
+2025-12-14 14:07:09,865 - ml_pipeline.model - INFO - Model: svm (tuned)
+2025-12-14 14:07:09,865 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:07:09,865 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:07:09,865 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:07:09,865 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:07:09,865 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:07:09,865 - ml_pipeline.ModelTrainer - ERROR - Failed to tune svm: unsupported format string passed to dict.__format__
+2025-12-14 14:07:09,865 - ml_pipeline.experiment - INFO - Completed experiment: hyperparameter_tuning
+2025-12-14 14:07:09,866 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:07:09,866 - ml_pipeline.experiment - INFO -   n_successful: 0
+2025-12-14 14:07:09,866 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:07:09,866 - ml_pipeline - INFO - STEP 4: Model Comparison and Analysis
+2025-12-14 14:07:09,866 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:07:09,870 - ml_pipeline.ModelTrainer - INFO - Created comparison for 4 model versions
+2025-12-14 14:07:09,875 - ml_pipeline.ModelTrainer - INFO - Best model: decision_tree_baseline with accuracy: 0.9333
+2025-12-14 14:07:09,875 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:07:09,875 - ml_pipeline - INFO - STEP 5: Saving Results
+2025-12-14 14:07:09,875 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - Results saved to results\MODEL RESULTS\ml_pipeline_results.pkl
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - 
+================================================== SUMMARY REPORT ==================================================
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - Dataset: 150 samples, 4 features
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - Classes: 3 (Iris-setosa, Iris-versicolor, Iris-virginica)
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - 
+Best Model: decision_tree_baseline
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - Accuracy: 0.9333
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - CV Score: 0.9429
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - 
+Model Rankings (by Accuracy):
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - 
+============================================================================================================
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - 
+====================================================================================================
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - PIPELINE COMPLETED SUCCESSFULLY
+2025-12-14 14:07:09,876 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:07:54,463 - ml_pipeline.__main__ - INFO - Starting Iris Classification API on 0.0.0.0:8001
+2025-12-14 14:07:54,500 - ml_pipeline - INFO - ML Pipeline initialized
+2025-12-14 14:07:54,745 - ml_pipeline.ModelService - INFO - Production model loaded: decision_tree_baseline
+2025-12-14 14:10:03,656 - ml_pipeline - INFO - ML Pipeline initialized
+2025-12-14 14:10:03,656 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:10:03,656 - ml_pipeline - INFO -                               IRIS CLASSIFICATION PIPELINE
+2025-12-14 14:10:03,656 - ml_pipeline - INFO -                          Modular Architecture v2.0
+2025-12-14 14:10:03,656 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:10:03,656 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:03,656 - ml_pipeline - INFO - STEP 1: Data Loading and Preparation
+2025-12-14 14:10:03,657 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:03,657 - ml_pipeline.DataLoader - INFO - Loading data from data/features.csv and data/targets.csv
+2025-12-14 14:10:03,663 - ml_pipeline.DataLoader - INFO - Data validation passed: 150 samples, 4 features, 3 classes
+2025-12-14 14:10:03,663 - ml_pipeline.DataLoader - INFO - Successfully loaded data: 150 samples, 4 features
+2025-12-14 14:10:03,663 - ml_pipeline.data - INFO - features shape: (150, 4)
+2025-12-14 14:10:03,663 - ml_pipeline.data - INFO - features basic statistics:
+       sepal length  sepal width  petal length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+2025-12-14 14:10:03,663 - ml_pipeline.data - INFO - features missing values: 0
+2025-12-14 14:10:03,679 - ml_pipeline.data - INFO - targets shape: (150,)
+2025-12-14 14:10:03,680 - ml_pipeline.data - INFO - targets basic statistics:
+count             150
+unique              3
+top       Iris-setosa
+freq               50
+Name: class, dtype: object
+2025-12-14 14:10:03,680 - ml_pipeline.data - INFO - targets missing values: 0
+2025-12-14 14:10:03,692 - ml_pipeline.DataLoader - INFO - Encoding 3 unique target classes
+2025-12-14 14:10:03,693 - ml_pipeline.DataLoader - INFO - Target classes: ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+2025-12-14 14:10:03,698 - ml_pipeline.DataLoader - INFO - Creating train-test split: test_size=0.3, random_state=42, stratify=True
+2025-12-14 14:10:03,699 - ml_pipeline.DataLoader - INFO - Train set: 105 samples, Test set: 45 samples
+2025-12-14 14:10:03,700 - ml_pipeline.DataLoader - INFO - Class distribution - Train: {'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333, 'Iris-virginica': 0.3333333333333333}, Test: {'Iris-virginica': 0.3333333333333333, 'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333}
+2025-12-14 14:10:03,700 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:03,700 - ml_pipeline - INFO - STEP 2: Baseline Model Training
+2025-12-14 14:10:03,700 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:03,704 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:10:03,704 - ml_pipeline.ModelTrainer - INFO - Training baseline models
+2025-12-14 14:10:03,704 - ml_pipeline.experiment - INFO - Starting experiment: baseline_training
+2025-12-14 14:10:03,704 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:10:03,706 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:10:03,706 - ml_pipeline.experiment - INFO -   n_samples: 105
+2025-12-14 14:10:03,706 - ml_pipeline.ModelTrainer - INFO - Training logistic_regression
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO - Model: logistic_regression (baseline)
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:10:05,678 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:10:05,678 - ml_pipeline.ModelTrainer - INFO - Training decision_tree
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO - Model: decision_tree (baseline)
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO -   cv_score: 0.9429
+2025-12-14 14:10:07,226 - ml_pipeline.model - INFO -   cv_std: 0.0190
+2025-12-14 14:10:07,226 - ml_pipeline.ModelTrainer - INFO - Training random_forest
+2025-12-14 14:10:08,976 - ml_pipeline.model - INFO - Model: random_forest (baseline)
+2025-12-14 14:10:08,976 - ml_pipeline.model - INFO -   accuracy: 0.8889
+2025-12-14 14:10:08,976 - ml_pipeline.model - INFO -   precision: 0.8981
+2025-12-14 14:10:08,976 - ml_pipeline.model - INFO -   recall: 0.8889
+2025-12-14 14:10:08,976 - ml_pipeline.model - INFO -   f1_score: 0.8878
+2025-12-14 14:10:08,977 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:10:08,977 - ml_pipeline.model - INFO -   cv_std: 0.0301
+2025-12-14 14:10:08,977 - ml_pipeline.ModelTrainer - INFO - Training svm
+2025-12-14 14:10:09,022 - ml_pipeline.model - INFO - Model: svm (baseline)
+2025-12-14 14:10:09,022 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:10:09,022 - ml_pipeline.model - INFO -   precision: 0.9345
+2025-12-14 14:10:09,022 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:10:09,022 - ml_pipeline.model - INFO -   f1_score: 0.9333
+2025-12-14 14:10:09,023 - ml_pipeline.model - INFO -   cv_score: 0.9714
+2025-12-14 14:10:09,023 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:10:09,023 - ml_pipeline.experiment - INFO - Completed experiment: baseline_training
+2025-12-14 14:10:09,023 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:10:09,023 - ml_pipeline.experiment - INFO -   n_successful: 4
+2025-12-14 14:10:09,023 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:09,023 - ml_pipeline - INFO - STEP 3: Hyperparameter Tuning
+2025-12-14 14:10:09,023 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:09,026 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:10:09,026 - ml_pipeline.ModelTrainer - INFO - Starting hyperparameter tuning
+2025-12-14 14:10:09,026 - ml_pipeline.experiment - INFO - Starting experiment: hyperparameter_tuning
+2025-12-14 14:10:09,027 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:10:09,027 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:10:09,027 - ml_pipeline.experiment - INFO -   cv_folds: 5
+2025-12-14 14:10:09,027 - ml_pipeline.ModelTrainer - INFO - Tuning logistic_regression
+2025-12-14 14:10:09,089 - ml_pipeline.model - INFO - Model: logistic_regression (tuned)
+2025-12-14 14:10:09,089 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:10:09,089 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:10:09,089 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:10:09,089 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:10:09,089 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:10:09,089 - ml_pipeline.ModelTrainer - ERROR - Failed to tune logistic_regression: unsupported format string passed to dict.__format__
+2025-12-14 14:10:09,089 - ml_pipeline.ModelTrainer - INFO - Tuning decision_tree
+2025-12-14 14:10:09,265 - ml_pipeline.model - INFO - Model: decision_tree (tuned)
+2025-12-14 14:10:09,265 - ml_pipeline.model - INFO -   accuracy: 0.9778
+2025-12-14 14:10:09,265 - ml_pipeline.model - INFO -   precision: 0.9792
+2025-12-14 14:10:09,266 - ml_pipeline.model - INFO -   recall: 0.9778
+2025-12-14 14:10:09,266 - ml_pipeline.model - INFO -   f1_score: 0.9778
+2025-12-14 14:10:09,266 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:10:09,266 - ml_pipeline.ModelTrainer - ERROR - Failed to tune decision_tree: unsupported format string passed to dict.__format__
+2025-12-14 14:10:09,266 - ml_pipeline.ModelTrainer - INFO - Tuning random_forest
+2025-12-14 14:10:14,863 - ml_pipeline.model - INFO - Model: random_forest (tuned)
+2025-12-14 14:10:14,863 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:10:14,864 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:10:14,864 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:10:14,864 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:10:14,864 - ml_pipeline.model - INFO -   cv_score: 0.9619
+2025-12-14 14:10:14,864 - ml_pipeline.ModelTrainer - ERROR - Failed to tune random_forest: unsupported format string passed to dict.__format__
+2025-12-14 14:10:14,864 - ml_pipeline.ModelTrainer - INFO - Tuning svm
+2025-12-14 14:10:14,954 - ml_pipeline.model - INFO - Model: svm (tuned)
+2025-12-14 14:10:14,954 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:10:14,954 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:10:14,954 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:10:14,954 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:10:14,954 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:10:14,954 - ml_pipeline.ModelTrainer - ERROR - Failed to tune svm: unsupported format string passed to dict.__format__
+2025-12-14 14:10:14,955 - ml_pipeline.experiment - INFO - Completed experiment: hyperparameter_tuning
+2025-12-14 14:10:14,955 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:10:14,955 - ml_pipeline.experiment - INFO -   n_successful: 0
+2025-12-14 14:10:14,955 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:14,955 - ml_pipeline - INFO - STEP 4: Model Comparison and Analysis
+2025-12-14 14:10:14,955 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:14,959 - ml_pipeline.ModelTrainer - INFO - Created comparison for 4 model versions
+2025-12-14 14:10:14,965 - ml_pipeline.ModelTrainer - INFO - Best model: decision_tree_baseline with accuracy: 0.9333
+2025-12-14 14:10:14,965 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:14,965 - ml_pipeline - INFO - STEP 5: Saving Results
+2025-12-14 14:10:14,966 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:10:14,967 - ml_pipeline - INFO - Results saved to results\MODEL RESULTS\ml_pipeline_results.pkl
+2025-12-14 14:10:15,010 - ml_pipeline.ModelManager - INFO - Production model saved to models\iris_model_v1.0.0.joblib
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - Production model saved to: models\iris_model_v1.0.0.joblib
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - 
+================================================== SUMMARY REPORT ==================================================
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - Dataset: 150 samples, 4 features
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - Classes: 3 (Iris-setosa, Iris-versicolor, Iris-virginica)
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - 
+Best Model: decision_tree_baseline
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - Accuracy: 0.9333
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - CV Score: 0.9429
+2025-12-14 14:10:15,010 - ml_pipeline - INFO - 
+Model Rankings (by Accuracy):
+2025-12-14 14:10:15,011 - ml_pipeline - INFO - 
+============================================================================================================
+2025-12-14 14:10:15,011 - ml_pipeline - INFO - 
+====================================================================================================
+2025-12-14 14:10:15,011 - ml_pipeline - INFO - PIPELINE COMPLETED SUCCESSFULLY
+2025-12-14 14:10:15,011 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:21:07,385 - ml_pipeline - INFO - ML Pipeline initialized
+2025-12-14 14:21:07,386 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:21:07,386 - ml_pipeline - INFO -                               IRIS CLASSIFICATION PIPELINE
+2025-12-14 14:21:07,386 - ml_pipeline - INFO -                          Modular Architecture v2.0
+2025-12-14 14:21:07,386 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:21:07,386 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:07,386 - ml_pipeline - INFO - STEP 1: Data Loading and Preparation
+2025-12-14 14:21:07,386 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:07,386 - ml_pipeline.DataLoader - INFO - Loading data from data/features.csv and data/targets.csv
+2025-12-14 14:21:07,398 - ml_pipeline.DataLoader - INFO - Data validation passed: 150 samples, 4 features, 3 classes
+2025-12-14 14:21:07,398 - ml_pipeline.DataLoader - INFO - Successfully loaded data: 150 samples, 4 features
+2025-12-14 14:21:07,398 - ml_pipeline.data - INFO - features shape: (150, 4)
+2025-12-14 14:21:07,403 - ml_pipeline.data - INFO - features basic statistics:
+       sepal length  sepal width  petal length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+2025-12-14 14:21:07,403 - ml_pipeline.data - INFO - features missing values: 0
+2025-12-14 14:21:07,403 - ml_pipeline.data - INFO - targets shape: (150,)
+2025-12-14 14:21:07,403 - ml_pipeline.data - INFO - targets basic statistics:
+count             150
+unique              3
+top       Iris-setosa
+freq               50
+Name: class, dtype: object
+2025-12-14 14:21:07,403 - ml_pipeline.data - INFO - targets missing values: 0
+2025-12-14 14:21:07,426 - ml_pipeline.DataLoader - INFO - Encoding 3 unique target classes
+2025-12-14 14:21:07,426 - ml_pipeline.DataLoader - INFO - Target classes: ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+2025-12-14 14:21:07,432 - ml_pipeline.DataLoader - INFO - Creating train-test split: test_size=0.3, random_state=42, stratify=True
+2025-12-14 14:21:07,434 - ml_pipeline.DataLoader - INFO - Train set: 105 samples, Test set: 45 samples
+2025-12-14 14:21:07,435 - ml_pipeline.DataLoader - INFO - Class distribution - Train: {'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333, 'Iris-virginica': 0.3333333333333333}, Test: {'Iris-virginica': 0.3333333333333333, 'Iris-versicolor': 0.3333333333333333, 'Iris-setosa': 0.3333333333333333}
+2025-12-14 14:21:07,435 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:07,435 - ml_pipeline - INFO - STEP 2: Baseline Model Training
+2025-12-14 14:21:07,435 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:07,439 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:21:07,439 - ml_pipeline.ModelTrainer - INFO - Training baseline models
+2025-12-14 14:21:07,439 - ml_pipeline.experiment - INFO - Starting experiment: baseline_training
+2025-12-14 14:21:07,439 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:21:07,440 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:21:07,440 - ml_pipeline.experiment - INFO -   n_samples: 105
+2025-12-14 14:21:07,440 - ml_pipeline.ModelTrainer - INFO - Training logistic_regression
+2025-12-14 14:21:09,448 - ml_pipeline.model - INFO - Model: logistic_regression (baseline)
+2025-12-14 14:21:09,448 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:21:09,448 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:21:09,448 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:21:09,449 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:21:09,449 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:21:09,449 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:21:09,449 - ml_pipeline.ModelTrainer - INFO - Training decision_tree
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO - Model: decision_tree (baseline)
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO -   cv_score: 0.9429
+2025-12-14 14:21:11,006 - ml_pipeline.model - INFO -   cv_std: 0.0190
+2025-12-14 14:21:11,006 - ml_pipeline.ModelTrainer - INFO - Training random_forest
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO - Model: random_forest (baseline)
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO -   accuracy: 0.8889
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO -   precision: 0.8981
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO -   recall: 0.8889
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO -   f1_score: 0.8878
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:21:12,734 - ml_pipeline.model - INFO -   cv_std: 0.0301
+2025-12-14 14:21:12,734 - ml_pipeline.ModelTrainer - INFO - Training svm
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO - Model: svm (baseline)
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO -   precision: 0.9345
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO -   f1_score: 0.9333
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO -   cv_score: 0.9714
+2025-12-14 14:21:12,765 - ml_pipeline.model - INFO -   cv_std: 0.0233
+2025-12-14 14:21:12,765 - ml_pipeline.experiment - INFO - Completed experiment: baseline_training
+2025-12-14 14:21:12,765 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:21:12,765 - ml_pipeline.experiment - INFO -   n_successful: 4
+2025-12-14 14:21:12,766 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:12,766 - ml_pipeline - INFO - STEP 3: Hyperparameter Tuning
+2025-12-14 14:21:12,766 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:12,769 - ml_pipeline.ModelTrainer - INFO - Created 4 baseline models
+2025-12-14 14:21:12,769 - ml_pipeline.ModelTrainer - INFO - Starting hyperparameter tuning
+2025-12-14 14:21:12,769 - ml_pipeline.experiment - INFO - Starting experiment: hyperparameter_tuning
+2025-12-14 14:21:12,769 - ml_pipeline.experiment - INFO - Parameters:
+2025-12-14 14:21:12,769 - ml_pipeline.experiment - INFO -   n_models: 4
+2025-12-14 14:21:12,769 - ml_pipeline.experiment - INFO -   cv_folds: 5
+2025-12-14 14:21:12,769 - ml_pipeline.ModelTrainer - INFO - Tuning logistic_regression
+2025-12-14 14:21:12,827 - ml_pipeline.model - INFO - Model: logistic_regression (tuned)
+2025-12-14 14:21:12,827 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:21:12,827 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:21:12,827 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:21:12,827 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:21:12,827 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:21:12,827 - ml_pipeline.ModelTrainer - ERROR - Failed to tune logistic_regression: unsupported format string passed to dict.__format__
+2025-12-14 14:21:12,827 - ml_pipeline.ModelTrainer - INFO - Tuning decision_tree
+2025-12-14 14:21:13,004 - ml_pipeline.model - INFO - Model: decision_tree (tuned)
+2025-12-14 14:21:13,004 - ml_pipeline.model - INFO -   accuracy: 0.9778
+2025-12-14 14:21:13,004 - ml_pipeline.model - INFO -   precision: 0.9792
+2025-12-14 14:21:13,004 - ml_pipeline.model - INFO -   recall: 0.9778
+2025-12-14 14:21:13,004 - ml_pipeline.model - INFO -   f1_score: 0.9778
+2025-12-14 14:21:13,005 - ml_pipeline.model - INFO -   cv_score: 0.9524
+2025-12-14 14:21:13,005 - ml_pipeline.ModelTrainer - ERROR - Failed to tune decision_tree: unsupported format string passed to dict.__format__
+2025-12-14 14:21:13,005 - ml_pipeline.ModelTrainer - INFO - Tuning random_forest
+2025-12-14 14:21:18,694 - ml_pipeline.model - INFO - Model: random_forest (tuned)
+2025-12-14 14:21:18,694 - ml_pipeline.model - INFO -   accuracy: 0.9111
+2025-12-14 14:21:18,695 - ml_pipeline.model - INFO -   precision: 0.9155
+2025-12-14 14:21:18,695 - ml_pipeline.model - INFO -   recall: 0.9111
+2025-12-14 14:21:18,695 - ml_pipeline.model - INFO -   f1_score: 0.9107
+2025-12-14 14:21:18,695 - ml_pipeline.model - INFO -   cv_score: 0.9619
+2025-12-14 14:21:18,695 - ml_pipeline.ModelTrainer - ERROR - Failed to tune random_forest: unsupported format string passed to dict.__format__
+2025-12-14 14:21:18,695 - ml_pipeline.ModelTrainer - INFO - Tuning svm
+2025-12-14 14:21:18,785 - ml_pipeline.model - INFO - Model: svm (tuned)
+2025-12-14 14:21:18,785 - ml_pipeline.model - INFO -   accuracy: 0.9333
+2025-12-14 14:21:18,785 - ml_pipeline.model - INFO -   precision: 0.9444
+2025-12-14 14:21:18,785 - ml_pipeline.model - INFO -   recall: 0.9333
+2025-12-14 14:21:18,785 - ml_pipeline.model - INFO -   f1_score: 0.9327
+2025-12-14 14:21:18,786 - ml_pipeline.model - INFO -   cv_score: 0.9810
+2025-12-14 14:21:18,786 - ml_pipeline.ModelTrainer - ERROR - Failed to tune svm: unsupported format string passed to dict.__format__
+2025-12-14 14:21:18,786 - ml_pipeline.experiment - INFO - Completed experiment: hyperparameter_tuning
+2025-12-14 14:21:18,786 - ml_pipeline.experiment - INFO - Results:
+2025-12-14 14:21:18,786 - ml_pipeline.experiment - INFO -   n_successful: 0
+2025-12-14 14:21:18,786 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:18,786 - ml_pipeline - INFO - STEP 4: Model Comparison and Analysis
+2025-12-14 14:21:18,786 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:18,790 - ml_pipeline.ModelTrainer - INFO - Created comparison for 4 model versions
+2025-12-14 14:21:18,796 - ml_pipeline.ModelTrainer - INFO - Best model: decision_tree_baseline with accuracy: 0.9333
+2025-12-14 14:21:18,796 - ml_pipeline - INFO - 
+----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:18,796 - ml_pipeline - INFO - STEP 5: Saving Results
+2025-12-14 14:21:18,796 - ml_pipeline - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-14 14:21:18,797 - ml_pipeline - INFO - Results saved to results\MODEL RESULTS\ml_pipeline_results.pkl
+2025-12-14 14:21:18,805 - ml_pipeline.ModelManager - INFO - Production model saved to models\iris_model_v1.0.0.joblib
+2025-12-14 14:21:18,805 - ml_pipeline - INFO - Production model saved to: models\iris_model_v1.0.0.joblib
+2025-12-14 14:21:18,805 - ml_pipeline - INFO - 
+================================================== SUMMARY REPORT ==================================================
+2025-12-14 14:21:18,805 - ml_pipeline - INFO - Dataset: 150 samples, 4 features
+2025-12-14 14:21:18,805 - ml_pipeline - INFO - Classes: 3 (Iris-setosa, Iris-versicolor, Iris-virginica)
+2025-12-14 14:21:18,805 - ml_pipeline - INFO - 
+Best Model: decision_tree_baseline
+2025-12-14 14:21:18,805 - ml_pipeline - INFO - Accuracy: 0.9333
+2025-12-14 14:21:18,806 - ml_pipeline - INFO - CV Score: 0.9429
+2025-12-14 14:21:18,806 - ml_pipeline - INFO - 
+Model Rankings (by Accuracy):
+2025-12-14 14:21:18,806 - ml_pipeline - INFO - 
+============================================================================================================
+2025-12-14 14:21:18,806 - ml_pipeline - INFO - 
+====================================================================================================
+2025-12-14 14:21:18,806 - ml_pipeline - INFO - PIPELINE COMPLETED SUCCESSFULLY
+2025-12-14 14:21:18,806 - ml_pipeline - INFO - ====================================================================================================
+2025-12-14 14:21:33,951 - ml_pipeline.__main__ - INFO - Starting Iris Classification API on 0.0.0.0:8002
+2025-12-14 14:21:33,991 - ml_pipeline.ModelManager - INFO - Production model loaded from models/iris_model_v1.0.0.joblib
+2025-12-14 14:21:33,991 - ml_pipeline.ModelManager - INFO - Model package validation passed
+2025-12-14 14:21:33,991 - ml_pipeline.ModelService - INFO - Production model loaded from models/iris_model_v1.0.0.joblib
