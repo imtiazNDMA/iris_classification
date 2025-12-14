@@ -78,8 +78,17 @@ class MLPipeline:
             # Convert to numpy arrays for modeling
             X_train_np = X_train.values
             X_test_np = X_test.values
-            y_train_np = y_encoded if label_encoder else y_train.values
-            y_test_np = y_encoded if label_encoder else y_test.values
+
+            # Handle target encoding properly for train/test split
+            if label_encoder:
+                # Fit encoder on training targets and transform both train and test
+                y_train_encoded = label_encoder.fit_transform(y_train)
+                y_test_encoded = label_encoder.transform(y_test)
+                y_train_np = y_train_encoded
+                y_test_np = y_test_encoded
+            else:
+                y_train_np = y_train.values
+                y_test_np = y_test.values
 
             # Step 2: Train baseline models
             self.logger.info("\n" + "-" * 100)
@@ -239,11 +248,11 @@ def main():
         pipeline = MLPipeline()
         results = pipeline.run()
 
-        print("\n✅ Pipeline completed successfully!")
-        print(f"📊 Results saved to: {get_config().output.model_results_path}")
+        print("\nPipeline completed successfully!")
+        print(f"Results saved to: {get_config().output.model_results_path}")
 
     except Exception as e:
-        print(f"\n❌ Pipeline failed: {str(e)}")
+        print(f"\nPipeline failed: {str(e)}")
         sys.exit(1)
 
 

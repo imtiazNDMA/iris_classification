@@ -58,14 +58,14 @@ class DataLoader:
             features_df = pd.read_csv(features_path)
             targets_df = pd.read_csv(targets_path)
 
-            # Validate data
-            self._validate_data(features_df, targets_df)
-
-            # Convert targets to Series
+            # Convert targets to Series first
             if targets_df.shape[1] == 1:
                 targets_series = targets_df.iloc[:, 0]
             else:
                 targets_series = targets_df.squeeze()
+
+            # Validate data (now with Series)
+            self._validate_data(features_df, targets_series)
 
             self.logger.info(
                 f"Successfully loaded data: {features_df.shape[0]} samples, {features_df.shape[1]} features"
@@ -80,12 +80,12 @@ class DataLoader:
             raise DataValidationError(f"Data loading failed: {str(e)}")
 
     @log_function_call
-    def _validate_data(self, features: pd.DataFrame, targets: pd.DataFrame) -> None:
+    def _validate_data(self, features: pd.DataFrame, targets: pd.Series) -> None:
         """Validate loaded data for consistency and quality.
 
         Args:
             features: Features DataFrame.
-            targets: Targets DataFrame.
+            targets: Targets Series.
 
         Raises:
             DataValidationError: If validation fails.
@@ -101,8 +101,8 @@ class DataLoader:
             missing_count = features.isnull().sum().sum()
             self.logger.warning(f"Found {missing_count} missing values in features")
 
-        if targets.isnull().any().any():
-            missing_count = targets.isnull().sum().sum()
+        if targets.isnull().any():
+            missing_count = targets.isnull().sum()
             raise DataValidationError(
                 f"Found {missing_count} missing values in targets"
             )

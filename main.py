@@ -27,15 +27,15 @@ def run_pipeline(config_path: Optional[str] = None) -> None:
         # Run complete pipeline
         results = pipeline.run()
 
-        print("\n✅ Pipeline completed successfully!")
-        print(f"📊 Results saved to: {get_config().output.model_results_path}")
+        print("\nPipeline completed successfully!")
+        print(f"Results saved to: {get_config().output.model_results_path}")
 
         return results
 
     except Exception as e:
         logger = get_logger(__name__)
         logger.error(f"Pipeline failed: {str(e)}")
-        print(f"\n❌ Pipeline failed: {str(e)}")
+        print(f"\nPipeline failed: {str(e)}")
         sys.exit(1)
 
 
@@ -74,7 +74,7 @@ def start_api_server(
     except Exception as e:
         logger = get_logger(__name__)
         logger.error(f"API server failed: {str(e)}")
-        print(f"\n❌ API server failed: {str(e)}")
+        print(f"\nAPI server failed: {str(e)}")
         sys.exit(1)
 
 
@@ -83,20 +83,20 @@ def run_tests() -> None:
     try:
         import pytest
 
-        print("🧪 Running test suite...")
+        print("Running test suite...")
         result = pytest.main(["tests/", "-v", "--tb=short"])
 
         if result == 0:
-            print("\n✅ All tests passed!")
+            print("\nAll tests passed!")
         else:
-            print(f"\n❌ Tests failed with exit code: {result}")
+            print(f"\nTests failed with exit code: {result}")
             sys.exit(result)
 
     except ImportError:
-        print("❌ pytest not found. Install with: uv add pytest")
+        print("pytest not found. Install with: uv add pytest")
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Test execution failed: {str(e)}")
+        print(f"Test execution failed: {str(e)}")
         sys.exit(1)
 
 
@@ -106,7 +106,7 @@ def validate_data() -> None:
         from src.data_loader import get_data_loader
         from src.data_validation import get_data_validator
 
-        print("🔍 Running data validation...")
+        print("Running data validation...")
 
         # Load data
         data_loader = get_data_loader()
@@ -121,13 +121,17 @@ def validate_data() -> None:
         print(report)
 
         if results["is_valid"]:
-            print("\n✅ Data validation passed!")
+            print("\nData validation passed!")
         else:
-            print("\n❌ Data validation failed!")
+            print("\nData validation failed!")
             sys.exit(1)
 
     except Exception as e:
-        print(f"❌ Data validation failed: {str(e)}")
+        print(f"Data validation failed: {str(e)}")
+        sys.exit(1)
+
+    except Exception as e:
+        print(f"Data validation failed: {str(e)}")
         sys.exit(1)
 
 
@@ -136,30 +140,30 @@ def show_config() -> None:
     try:
         config = get_config()
 
-        print("⚙️  Current Configuration:")
+        print("Current Configuration:")
         print("=" * 50)
 
-        print(f"Data:")
+        print("Data:")
         print(f"  Features: {config.data.features_path}")
         print(f"  Targets: {config.data.targets_path}")
         print(f"  Test Size: {config.data.test_size}")
         print(f"  Random State: {config.data.random_state}")
 
-        print(f"\nModels:")
+        print("\nModels:")
         for model_name, params in config.models.__dict__.items():
             print(f"  {model_name}: {params}")
 
-        print(f"\nCross-Validation:")
+        print("\nCross-Validation:")
         print(f"  Folds: {config.cross_validation.cv_folds}")
         print(f"  Scoring: {config.cross_validation.scoring}")
         print(f"  Jobs: {config.cross_validation.n_jobs}")
 
-        print(f"\nOutput:")
+        print("\nOutput:")
         print(f"  Results Dir: {config.output.results_dir}")
         print(f"  Model Results: {config.output.model_results_path}")
         print(f"  Save Models: {config.output.save_models}")
 
-        print(f"\nLogging:")
+        print("\nLogging:")
         print(f"  Level: {config.logging.level}")
         print(f"  File: {config.logging.file}")
         print(f"  Console: {config.logging.console}")
@@ -167,7 +171,7 @@ def show_config() -> None:
         print("=" * 50)
 
     except Exception as e:
-        print(f"❌ Failed to load configuration: {str(e)}")
+        print(f"Failed to load configuration: {str(e)}")
         sys.exit(1)
 
 
@@ -257,10 +261,10 @@ Examples:
             run_pipeline(config_path=args.config_file)
 
     except KeyboardInterrupt:
-        print("\n👋 Operation cancelled by user")
+        print("\nOperation cancelled by user")
         sys.exit(0)
     except Exception as e:
-        print(f"\n❌ Operation failed: {str(e)}")
+        print(f"\nOperation failed: {str(e)}")
         sys.exit(1)
 
 

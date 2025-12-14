@@ -416,7 +416,7 @@ class DataValidator:
         report.append("=" * 60)
 
         # Overall assessment
-        status = "✅ VALID" if validation_results["is_valid"] else "❌ INVALID"
+        status = "VALID" if validation_results["is_valid"] else "INVALID"
         score = validation_results["quality_score"]
         report.append(f"Overall Status: {status}")
         report.append(f"Quality Score: {score:.1f}/100")
@@ -442,14 +442,14 @@ class DataValidator:
         if validation_results["errors"]:
             report.append("ERRORS:")
             for error in validation_results["errors"]:
-                report.append(f"  ❌ {error}")
+                report.append(f"  - {error}")
             report.append("")
 
         # Warnings
         if validation_results["warnings"]:
             report.append("WARNINGS:")
             for warning in validation_results["warnings"]:
-                report.append(f"  ⚠️  {warning}")
+                report.append(f"  - {warning}")
             report.append("")
 
         # Quality indicators
@@ -457,9 +457,9 @@ class DataValidator:
             len(validation_results["errors"]) == 0
             and len(validation_results["warnings"]) == 0
         ):
-            report.append("🎉 Excellent data quality! No issues found.")
+            report.append("Excellent data quality! No issues found.")
         elif len(validation_results["errors"]) == 0:
-            report.append("✅ Data is valid with minor quality concerns.")
+            report.append("Data is valid with minor quality concerns.")
 
         report.append("=" * 60)
 

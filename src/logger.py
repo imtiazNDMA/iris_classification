@@ -122,7 +122,11 @@ def log_data_info(data, name: str = "data") -> None:
         if hasattr(data, "describe") and callable(data.describe):
             logger.info(f"{name} basic statistics:\n{data.describe()}")
         if hasattr(data, "isnull") and callable(data.isnull):
-            null_count = data.isnull().sum().sum()
+            # Handle both DataFrame and Series
+            if hasattr(data, "columns"):  # DataFrame
+                null_count = data.isnull().sum().sum()
+            else:  # Series
+                null_count = data.isnull().sum()
             logger.info(f"{name} missing values: {null_count}")
     except Exception as e:
         logger.warning(f"Could not analyze {name}: {str(e)}")

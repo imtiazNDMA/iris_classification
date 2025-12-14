@@ -1,4 +1,4 @@
-# 🌸 Iris Classification Machine Learning Pipeline
+# Iris Classification Machine Learning Pipeline
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.5+-orange.svg)](https://scikit-learn.org)
@@ -6,18 +6,18 @@
 
 A comprehensive machine learning project demonstrating end-to-end classification using multiple algorithms with hyperparameter optimization and professional data visualizations.
 
-## 🎯 Project Overview
+## Project Overview
 
 This project showcases a complete machine learning pipeline for the classic Iris classification problem, featuring:
 
-- **🔍 Exploratory Data Analysis** with comprehensive visualizations
-- **⚙️ Data Preprocessing** with feature scaling and train-test splitting
-- **🤖 Model Training** with 4 different classification algorithms
-- **🎛️ Hyperparameter Optimization** using GridSearchCV
-- **📊 Performance Comparison** with detailed metrics and analysis
-- **📈 Professional Visualizations** with publication-ready design
+- **Exploratory Data Analysis** with comprehensive visualizations
+- **Data Preprocessing** with feature scaling and train-test splitting
+- **Model Training** with 4 different classification algorithms
+- **Hyperparameter Optimization** using GridSearchCV
+- **Performance Comparison** with detailed metrics and analysis
+- **Professional Visualizations** with publication-ready design
 
-## 📊 Dataset
+## Dataset
 
 - **Dataset**: Iris Flower Classification
 - **Features**: 4 numerical measurements (sepal length, sepal width, petal length, petal width)
@@ -25,7 +25,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 - **Samples**: 150 observations
 - **Balance**: Perfectly balanced (50 samples per class)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language**: Python 3.10+
 - **ML Framework**: Scikit-learn
@@ -84,7 +84,7 @@ This project showcases a complete machine learning pipeline for the classic Iris
 - **Average Metrics**: Precision, recall, and F1-score comparison
 - **Improvement Analysis**: Before/after hyperparameter tuning results
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 iris_classification/
@@ -127,7 +127,7 @@ iris_classification/
 └── README.md               # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.10+
@@ -201,26 +201,57 @@ jupyter notebook notebooks/
 docker-compose up jupyter
 ```
 
-## 📋 Modules & Scripts
+## Modules & Scripts
 
 ### Core Modules (`src/`)
 
-#### `eda_analysis.py`
-- Comprehensive exploratory data analysis
-- Generates 4 EDA visualizations (distributions, correlations, pairwise plots, boxplots)
-- Detects outliers and correlations
-- Provides feature insights and recommendations
+#### `config.py`
+- Comprehensive configuration management with YAML support
+- Environment-based configuration system
+- Type-safe configuration classes
+- Automatic directory creation
 
-#### `ml_pipeline.py`
-- End-to-end ML pipeline implementation
-- Trains 4 baseline and 4 tuned models
-- Performs hyperparameter optimization with GridSearchCV
-- Generates detailed performance reports and saves results
+#### `logger.py`
+- Structured logging with file and console output
+- Configurable log levels and formats
+- Function call decorators for debugging
+- Performance and experiment logging utilities
 
-#### `ml_visualizations.py`
-- Creates professional ML visualizations
-- 5 comprehensive analysis plots (accuracy comparison, confusion matrices, cross-validation, metrics, improvement)
-- High data-ink ratio design with consistent styling
+#### `data_loader.py`
+- Comprehensive data loading and validation
+- CSV file handling with error checking
+- Target encoding with LabelEncoder
+- Train-test split with stratification
+- Data quality reporting
+
+#### `data_validation.py`
+- Comprehensive data quality checks
+- Missing value detection and analysis
+- Outlier detection using IQR method
+- Feature correlation analysis
+- Quality scoring system (0-100)
+- Detailed validation reports
+
+#### `model_trainer.py`
+- Model training with baseline and hyperparameter tuning
+- GridSearchCV with cross-validation
+- Multiple algorithm support (Logistic Regression, Decision Tree, Random Forest, SVM)
+- Performance metrics calculation
+- Model comparison and ranking
+
+#### `api.py`
+- FastAPI-based REST API for model inference
+- Pydantic models for input validation
+- Single and batch prediction endpoints
+- Health check and model information endpoints
+- Automatic API documentation with OpenAPI/Swagger
+
+#### `ml_pipeline_refactored.py`
+- Main pipeline orchestrator
+- Integration of all modules
+- Comprehensive error handling
+- Structured logging throughout
+- Results serialization and reporting
 
 ### Jupyter Notebooks (`notebooks/`)
 
@@ -295,9 +326,9 @@ Iris-versicolor       1.00      0.93      0.97        15
 weighted avg       0.98      0.98      0.98        45
 ```
 
-## 💡 Key Features & Highlights
+## Key Features & Highlights
 
-### 🏗️ **Software Engineering Excellence**
+### Software Engineering Excellence
 - **Modular Architecture**: Clean separation of concerns with reusable components
 - **Configuration Management**: YAML-based configuration with environment support
 - **Structured Logging**: Comprehensive logging with file and console output
@@ -305,7 +336,7 @@ weighted avg       0.98      0.98      0.98        45
 - **Type Safety**: Full type hints and data validation with Pydantic
 - **Testing Framework**: Comprehensive pytest test suite with fixtures
 
-### 🔬 **Machine Learning Best Practices**
+### Machine Learning Best Practices
 - **Data Validation**: Automated data quality checks and validation
 - **Model Comparison**: Systematic evaluation of multiple algorithms
 - **Hyperparameter Tuning**: Grid search with cross-validation
@@ -313,7 +344,7 @@ weighted avg       0.98      0.98      0.98        45
 - **Reproducibility**: Fixed random seeds and deterministic pipelines
 - **Experiment Tracking**: Structured logging and result serialization
 
-### 🚀 **Production-Ready Features**
+### Production-Ready Features
 - **API Service**: FastAPI-based REST API for model inference
 - **Containerization**: Docker and Docker Compose support
 - **Health Checks**: Built-in health monitoring and status endpoints
@@ -321,23 +352,23 @@ weighted avg       0.98      0.98      0.98        45
 - **Scalability**: Multi-worker support and load balancing ready
 - **Security**: Input validation and CORS support
 
-### 📊 **Data Science Excellence**
+### Data Science Excellence
 - **Exploratory Analysis**: Comprehensive EDA with visualizations
 - **Statistical Validation**: Rigorous statistical testing and validation
 - **Publication-Ready Plots**: Professional visualizations with consistent styling
 - **Interactive Notebooks**: Jupyter notebooks for exploration and prototyping
 - **Performance Optimization**: Efficient algorithms and memory usage
 
-## 🎓 Learning Outcomes & Technical Expertise
+## Learning Outcomes & Technical Expertise
 
-### **Machine Learning Engineering**
+### Machine Learning Engineering
 - **End-to-End ML Pipelines**: From data ingestion to model deployment
 - **Model Lifecycle Management**: Training, validation, and serving workflows
 - **Hyperparameter Optimization**: Systematic tuning with cross-validation
 - **Performance Evaluation**: Comprehensive metrics and statistical analysis
 - **Experiment Management**: Reproducible experiments with tracking
 
-### **Software Engineering**
+### Software Engineering
 - **Modular Architecture**: Clean separation of concerns and SOLID principles
 - **API Development**: RESTful API design with FastAPI
 - **Container Orchestration**: Docker and Docker Compose deployment
@@ -345,23 +376,23 @@ weighted avg       0.98      0.98      0.98        45
 - **Configuration Management**: Environment-based configuration systems
 - **Logging & Monitoring**: Structured logging and observability
 
-### **Data Science & Analytics**
+### Data Science & Analytics
 - **Statistical Analysis**: Rigorous EDA and hypothesis testing
 - **Data Validation**: Automated quality checks and anomaly detection
 - **Feature Engineering**: Systematic feature selection and transformation
 - **Visualization Excellence**: Publication-ready data storytelling
 - **Reproducible Research**: Version-controlled analytical workflows
 
-### **DevOps & MLOps**
+### DevOps & MLOps
 - **Containerization**: Multi-stage Docker builds for production
 - **Service Orchestration**: Multi-service deployment with Docker Compose
 - **API Documentation**: Auto-generated OpenAPI/Swagger documentation
 - **Health Monitoring**: Built-in health checks and status endpoints
 - **Scalability Patterns**: Stateless services ready for horizontal scaling
 
-## 🚀 Production Deployment Guide
+## Production Deployment Guide
 
-### **API Endpoints**
+### API Endpoints
 ```bash
 # Health check
 GET /health
@@ -391,7 +422,7 @@ POST /predict/batch
 GET /predict/demo
 ```
 
-### **Docker Deployment**
+### Docker Deployment
 ```bash
 # Build and deploy all services
 docker-compose up -d
@@ -406,19 +437,19 @@ docker-compose logs -f api
 docker-compose down
 ```
 
-### **Configuration**
+### Configuration
 - **Environment Variables**: `LOG_LEVEL`, `PYTHONPATH`
 - **Configuration Files**: `config/config.yaml`
 - **Secrets Management**: Environment-based configuration
 - **Resource Limits**: Configurable memory and CPU limits
 
-### **Monitoring & Observability**
+### Monitoring & Observability
 - **Health Checks**: `/health` endpoint with service status
 - **Structured Logging**: JSON-formatted logs with correlation IDs
 - **Performance Metrics**: Request timing and model inference metrics
 - **Error Tracking**: Comprehensive error logging and alerting
 
-## 🤝 Contributing
+## Contributing
 
 This project serves as a portfolio showcase demonstrating:
 - **ML Pipeline Design**: From raw data to production-ready models
@@ -426,7 +457,7 @@ This project serves as a portfolio showcase demonstrating:
 - **Visualization Excellence**: Professional data storytelling
 - **Code Quality**: Clean, documented, and reproducible code
 
-## 📞 Contact
+## Contact
 
 **Imtiaz Nabi**  
 📧 [imtiaznabi8@gmail.com](mailto:imtiaznabi8@gmail.com)  
@@ -435,4 +466,4 @@ This project serves as a portfolio showcase demonstrating:
 
 ---
 
-*🌸 This project demonstrates the complete lifecycle of a machine learning classification task, from data exploration to model deployment-ready solutions.*
+*This project demonstrates the complete lifecycle of a machine learning classification task, from data exploration to model deployment-ready solutions.*
